@@ -1,0 +1,11 @@
+{
+  "hello": "Salut",
+  "labels": {
+    "not_available": "N/D",
+    "links": "Liens"
+  },
+  "buttons": {
+    "submit": "Soumettre",
+    "reset": "Réinitialiser"
+  }
+}

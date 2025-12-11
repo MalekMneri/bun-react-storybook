@@ -1,0 +1,11 @@
+{
+  "hello": "Hello",
+  "labels": {
+    "not_available": "N/A",
+    "links": "Links"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "reset": "Reset"
+  }
+}

@@ -38,7 +38,7 @@ function UserInfo({
             boxShadow: '0px 6px 10px 0px #003B2F33',
           }}
         >
-          <AvatarImage src={avatar} alt="avatar" className="rounded-full" />
+          <AvatarImage src={avatar} alt="avatar" className="rounded-full object-cover" />
           <AvatarFallback>{`${firstName} ${lastName}`}</AvatarFallback>
         </Avatar>
       </div>

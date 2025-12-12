@@ -8,13 +8,14 @@ const LanguageSelector: FC<LanguageSelectorProps> = ({
   options,
   className,
   currentLanguage,
+  size,
   onChange,
 }) => {
   const selectedOption = options.find((opt) => opt.code === currentLanguage);
 
   return (
     <Select onValueChange={onChange} defaultValue={currentLanguage}>
-      <SelectTrigger className={cn(className)}>
+      <SelectTrigger className={cn(className)} size={size}>
         {selectedOption ? (
           <div className="flex items-center gap-2">
             <img

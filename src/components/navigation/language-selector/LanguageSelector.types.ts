@@ -1,5 +1,6 @@
 export type LanguageSelectorProps = {
   className?: string;
+  size?: 'default' | 'sm';
   options: Array<LanguageOption>;
   currentLanguage?: string;
   onChange?: (code: string) => void;

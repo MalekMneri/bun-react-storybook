@@ -28,20 +28,6 @@ export const Route = createFileRoute('/')({
                 </Link>
               </Button>
             </li>
-            <li>
-              <Button variant="link" className="data-[status=active]:text-green-600" asChild>
-                <Link to="/hello" activeProps={{ className: 'font-bold text-primary' }}>
-                  Hello
-                </Link>
-              </Button>
-            </li>
-            <li>
-              <Button variant="link" className="data-[status=active]:text-green-600" asChild>
-                <Link to="/test" activeProps={{ className: 'font-bold text-primary' }}>
-                  Test
-                </Link>
-              </Button>
-            </li>
           </ul>
         </div>
       </div>

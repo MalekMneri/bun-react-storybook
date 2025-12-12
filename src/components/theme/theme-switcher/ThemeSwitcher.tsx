@@ -4,12 +4,13 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
 import type { ThemeSwitcherProps } from './ThemeSwitcher.types';
 
-const ThemeSwitcher = ({ theme, className, toggle }: ThemeSwitcherProps) => {
+const ThemeSwitcher = ({ theme, className, size, toggle }: ThemeSwitcherProps) => {
   return (
     <Button
       className={cn('w-9 p-0 transition-all duration-300', className)}
       variant="outline"
       onClick={toggle}
+      size={size}
     >
       <AnimatePresence mode="wait" initial={false}>
         {theme === 'dark' ? (
@@ -20,7 +21,7 @@ const ThemeSwitcher = ({ theme, className, toggle }: ThemeSwitcherProps) => {
             exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
             transition={{ duration: 0.3 }}
           >
-            <Moon className="size-5" />
+            <Moon className={cn(size !== 'icon-sm' && 'size-5')} />
           </motion.div>
         ) : (
           <motion.div
@@ -30,7 +31,7 @@ const ThemeSwitcher = ({ theme, className, toggle }: ThemeSwitcherProps) => {
             exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
             transition={{ duration: 0.3 }}
           >
-            <Sun className="size-5" />
+            <Sun className={cn(size !== 'icon-sm' && 'size-5')} />
           </motion.div>
         )}
       </AnimatePresence>

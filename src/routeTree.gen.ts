@@ -11,10 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TestRouteImport } from './routes/test'
 import { Route as ProfileRouteImport } from './routes/profile'
-import { Route as HelloRouteImport } from './routes/hello'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PokemonIndexRouteImport } from './routes/pokemon/index'
-import { Route as PokemonIdRouteImport } from './routes/pokemon/$id'
+import { Route as AuthIndexRouteImport } from './routes/auth/index'
+import { Route as AuthResetPasswordRouteImport } from './routes/auth/reset-password'
+import { Route as AuthForgotPasswordRouteImport } from './routes/auth/forgot-password'
 
 const TestRoute = TestRouteImport.update({
   id: '/test',
@@ -26,74 +26,86 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
-const HelloRoute = HelloRouteImport.update({
-  id: '/hello',
-  path: '/hello',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PokemonIndexRoute = PokemonIndexRouteImport.update({
-  id: '/pokemon/',
-  path: '/pokemon/',
+const AuthIndexRoute = AuthIndexRouteImport.update({
+  id: '/auth/',
+  path: '/auth/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PokemonIdRoute = PokemonIdRouteImport.update({
-  id: '/pokemon/$id',
-  path: '/pokemon/$id',
+const AuthResetPasswordRoute = AuthResetPasswordRouteImport.update({
+  id: '/auth/reset-password',
+  path: '/auth/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotPasswordRoute = AuthForgotPasswordRouteImport.update({
+  id: '/auth/forgot-password',
+  path: '/auth/forgot-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/hello': typeof HelloRoute
   '/profile': typeof ProfileRoute
   '/test': typeof TestRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon': typeof PokemonIndexRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth': typeof AuthIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/hello': typeof HelloRoute
   '/profile': typeof ProfileRoute
   '/test': typeof TestRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon': typeof PokemonIndexRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth': typeof AuthIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/hello': typeof HelloRoute
   '/profile': typeof ProfileRoute
   '/test': typeof TestRoute
-  '/pokemon/$id': typeof PokemonIdRoute
-  '/pokemon/': typeof PokemonIndexRoute
+  '/auth/forgot-password': typeof AuthForgotPasswordRoute
+  '/auth/reset-password': typeof AuthResetPasswordRoute
+  '/auth/': typeof AuthIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hello' | '/profile' | '/test' | '/pokemon/$id' | '/pokemon'
+  fullPaths:
+    | '/'
+    | '/profile'
+    | '/test'
+    | '/auth/forgot-password'
+    | '/auth/reset-password'
+    | '/auth'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hello' | '/profile' | '/test' | '/pokemon/$id' | '/pokemon'
+  to:
+    | '/'
+    | '/profile'
+    | '/test'
+    | '/auth/forgot-password'
+    | '/auth/reset-password'
+    | '/auth'
   id:
     | '__root__'
     | '/'
-    | '/hello'
     | '/profile'
     | '/test'
-    | '/pokemon/$id'
-    | '/pokemon/'
+    | '/auth/forgot-password'
+    | '/auth/reset-password'
+    | '/auth/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  HelloRoute: typeof HelloRoute
   ProfileRoute: typeof ProfileRoute
   TestRoute: typeof TestRoute
-  PokemonIdRoute: typeof PokemonIdRoute
-  PokemonIndexRoute: typeof PokemonIndexRoute
+  AuthForgotPasswordRoute: typeof AuthForgotPasswordRoute
+  AuthResetPasswordRoute: typeof AuthResetPasswordRoute
+  AuthIndexRoute: typeof AuthIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -112,13 +124,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/hello': {
-      id: '/hello'
-      path: '/hello'
-      fullPath: '/hello'
-      preLoaderRoute: typeof HelloRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/': {
       id: '/'
       path: '/'
@@ -126,18 +131,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pokemon/': {
-      id: '/pokemon/'
-      path: '/pokemon'
-      fullPath: '/pokemon'
-      preLoaderRoute: typeof PokemonIndexRouteImport
+    '/auth/': {
+      id: '/auth/'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/pokemon/$id': {
-      id: '/pokemon/$id'
-      path: '/pokemon/$id'
-      fullPath: '/pokemon/$id'
-      preLoaderRoute: typeof PokemonIdRouteImport
+    '/auth/reset-password': {
+      id: '/auth/reset-password'
+      path: '/auth/reset-password'
+      fullPath: '/auth/reset-password'
+      preLoaderRoute: typeof AuthResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth/forgot-password': {
+      id: '/auth/forgot-password'
+      path: '/auth/forgot-password'
+      fullPath: '/auth/forgot-password'
+      preLoaderRoute: typeof AuthForgotPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -145,11 +157,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HelloRoute: HelloRoute,
   ProfileRoute: ProfileRoute,
   TestRoute: TestRoute,
-  PokemonIdRoute: PokemonIdRoute,
-  PokemonIndexRoute: PokemonIndexRoute,
+  AuthForgotPasswordRoute: AuthForgotPasswordRoute,
+  AuthResetPasswordRoute: AuthResetPasswordRoute,
+  AuthIndexRoute: AuthIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

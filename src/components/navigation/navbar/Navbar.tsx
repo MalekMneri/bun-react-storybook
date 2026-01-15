@@ -55,7 +55,7 @@ const Navbar = ({
   return (
     <nav
       className={cn(
-        'bg-background dark:border-border flex items-center justify-between rounded-lg border border-transparent p-2 shadow-xs lg:p-4',
+        'bg-background dark:border-border flex items-center justify-between rounded-lg border border-transparent p-2 shadow-lg lg:p-4',
         className,
       )}
     >
@@ -84,7 +84,7 @@ const Navbar = ({
         <div className="flex items-center gap-2">
           <UserInfo {...userInfoProps} minimized={!isLargeScreen} />
           <Popover>
-            <PopoverTrigger className="group">
+            <PopoverTrigger asChild className="group">
               <Button variant="ghost" size="icon" className="text-muted-foreground">
                 <ChevronDown className="transition duration-200 group-data-[state=open]:rotate-180" />
               </Button>

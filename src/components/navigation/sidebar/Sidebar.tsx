@@ -137,7 +137,7 @@ function Sidebar({
       <TooltipProvider delayDuration={0}>
         <div
           className={cn(
-            'bg-background dark:border-border flex flex-col justify-between gap-6 rounded-lg border border-transparent shadow-xs',
+            'bg-background dark:border-border flex flex-col justify-between gap-6 rounded-lg border border-transparent shadow-lg',
             open ? 'w-64' : 'w-21',
             className,
           )}
